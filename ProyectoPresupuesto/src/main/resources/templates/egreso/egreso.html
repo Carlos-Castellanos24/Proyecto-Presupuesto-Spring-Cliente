@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Egreso</title>
+        <link rel="stylesheet" href="css/ingreso-egreso.css" />
+    </head>
+    <body>
+        <section class="container">
+            <header>Formulario de Egreso</header>
+            <form th:action="@{/insertarEgreso}" th:object="${egreso}" class="form" method="POST">
+                <div th:if="${egresoError != null}">
+                    <p><span class="span" style="color: red;">[[${egresoError}]]</span></p>
+                </div>
+                <div class="input-box">
+                    <label>Saldo del Egreso</label>
+                    <input type="number" name="saldoEgreso" id="saldoEgreso" class="input" placeholder="$0000.00" min="1" pattern="[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off onclick="validarSaldoEgresoNegativo();" step="any" required />
+                </div>               
+                <div class="input-box">
+                    <label>Descripcion</label>
+                    <input type="text" name="descripcion" class="input" placeholder="Breve descripcion del egreso." maxlength="70" required />
+                </div> 
+                <div class="column">
+                    <div class="input-box">
+                        <label>Fecha del Egreso</label>
+                        <input type="date" name="fechaEgreso" class="input" required />
+                    </div>                   
+                </div> 
+                <input type="hidden" name="estadoEgreso" value="A">
+                <button>Agregar Egreso</button>
+            </form>
+        </section>
+        <script src="js/validacionSaldoEgreso.js" type="text/javascript"></script>
+        <script src="js/validacionSaldoNegativo.js" type="text/javascript"></script>
+    </body>
+</html>

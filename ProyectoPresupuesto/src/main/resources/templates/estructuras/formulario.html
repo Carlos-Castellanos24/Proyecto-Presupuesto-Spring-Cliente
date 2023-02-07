@@ -1,0 +1,18 @@
+<form id="forma" onsubmit="return false;">
+    <div class="agregar">
+        <div class="agregar_contenedor" style="color: #246ECD;">
+            <div class="dropdown">
+                <input type="button" class="agregar_valor" value="Mi perfil"></input>
+                <div class="dropdown-content">
+                    <a href="/perfil"><ion-icon name="person"></ion-icon> Mi Cuenta</a>
+                    <a href="/ingresos"><ion-icon name="cash"></ion-icon> Todos mis Ingresos</a>
+                    <a href="/egresos"><ion-icon name="card"></ion-icon> Todos mis Egresos</a>
+                    <a href="/cerrarSesion"><ion-icon name="log-out"></ion-icon> Cerrar Sesi&oacute;n</a>
+                </div>
+            </div>                                    
+            <a class="agregarEgreso" href="/egreso"><input type="button" value="Agregar Egreso" class="agregar_valor" id="valor"/></a>
+            <a class="agregarIngreso" href="/ingreso"><input type="button" value="Agregar Ingreso" class="agregar_valor" id="descripcion"/></a>
+            <a class="agregarIngreso" href="/envioDinero" style="color: #85bb65;"><input type="button" value="Enviar Dinero" class="agregar_valor" id="descripcion"/></a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+<div class="contenedor limpiarEstilos">
+    <div class="ingreso">
+        <h2 class="ingreso_titulo">Ingresos</h2>
+        <div th:each="ingresos : ${ingresosUsuario}">
+            <div id="lista-ingresos"> 
+                <div class="elemento limpiarEstilos">
+                    <div th:text="${ingresos.descripcion}" class="elemento_descripcion">
+                        hola
+                    </div>
+                    <div class="derecha limpiarEstilos">
+                        <div th:text="'+'+ '$' + ${ingresos.saldoIngreso}" class="elemento_valor">
+                            25
+                        </div>
+                        <div class="elemento_eliminar">
+                            <div class="elemento_eliminar--btn">
+                                <a th:href="@{/detallesIngreso/} + ${ingresos.idIngreso}"><ion-icon name="information-circle-outline"></ion-icon></a>     
+                                <a th:href="@{/eliminarIngreso/} + ${ingresos.idIngreso}"><ion-icon name="trash"><a></a></ion-icon></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${ingresosUsuario == null or ingresosUsuario.empty}">
+            <p class="alerta">Aun no hay ingresos.</p>
+        </div>
+    </div>
+    <div class="egreso">
+        <h2 class="egreso_titulo">Egresos</h2>
+        <div th:each="egresos : ${egresosUsuario}">
+            <div id="lista-egresos">
+                <div class="elemento limpiarEstilos">
+                    <div th:text="${egresos.descripcion}" class="elemento_descripcion">
+                        hola
+                    </div>
+                    <div class="derecha limpiarEstilos">
+                        <div th:text="'-' + '$' + ${egresos.saldoEgreso}" class="elemento_valor">
+                            25
+                        </div>
+                        <div class="elemento_eliminar">
+                            <div class="elemento_eliminar--btn">
+                                <a th:href="@{/detallesEgreso/} + ${egresos.idEgreso}"><ion-icon name="information-circle-outline"></ion-icon></a>     
+                                <a th:href="@{/eliminarEgreso/} + ${egresos.idEgreso}"><ion-icon name="trash"><a></a></ion-icon></a>                                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div th:if="${egresosUsuario == null or egresosUsuario.empty}">
+            <p class="alerta">Aun no hay egresos.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div th:each="cuenta : ${cuentaEncontrada}">
+    <div class="cabecero">
+        <div class="presupuesto">
+            <div class="presupuesto_titulo">
+                Presupuesto Disponible
+            </div>
+            <div th:text="'$' + ${cuenta.saldoDisponible}" class="presupuesto_valor" id="presupuesto">
+                + 2,000.00
+            </div>
+            <div class="presupuesto_ingreso limpiarEstilos">
+                <div th:if="${ultimoIngreso != null}">
+                <div class="presupuesto_ingreso--texto">
+                    Ultimo Ingreso
+                </div>
+                    <div th:each="ultimo : ${ultimoIngreso}" class="derecha">
+                        <div th:text="'+ $'+ ${ultimo.saldoIngreso}" class="presupuesto_ingreso--valor" id="ingresos">
+                            + 4,000.00
+                        </div>
+                    </div>
+                    <div class="presupuesto_ingreso--texto" th:if="${ultimoIngreso == null}">
+                        Aun no hay Ingresos.
+                    </div>
+                    <div class="presupuesto_ingreso--porcentaje">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="presupuesto_egreso limpiarEstilos">
+                <div th:if="${ultimoEgreso != null}">
+                    <div class="presupuesto_egreso--texto">
+                        Ultimo Egreso
+                    </div>
+                    <div th:each="ultimoE : ${ultimoEgreso}" class="derecha limpiarEstilos">
+                        <div th:text="'- $'+ ${ultimoE.saldoEgreso}" class="presupuesto_egreso--valor" id="egresos">
+                            - 1,900.00 
+                        </div>
+                    </div>
+                </div>
+                <div class="presupuesto_egreso--texto" th:if="${ultimoEgreso == null}">
+                    Aun no hay Egresos.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

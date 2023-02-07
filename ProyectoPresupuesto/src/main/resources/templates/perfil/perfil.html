@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <link href="../css/detalles.css" rel="stylesheet">
+                <title>Perfil</title>
+                </head>
+                <body>
+
+                    <!-- CABECERO -->
+                    <div th:replace="/estructuras/cabecero :: div"></div>
+
+                    <form id="forma">
+                        <div class="agregar">
+                            <div class="agregar_contenedor" >                                                                  
+                                <a style="color: #246ECD;" class="agregarEgreso" th:href="@{/actualizarPerfil/} + ${idCuenta}"><input type="button" value="Actualizar Perfil" class="agregar_valor" id="valor"/></a>
+                                <a class="agregarEgreso" th:href="@{/eliminarCuenta/} + ${idCuenta}"><input type="button" value="Eliminar Cuenta" class="agregar_valor" id="valor"/></a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="contenedor limpiarEstilos">
+                        <div class="ingreso">
+                            <h2 class="ingreso_titulo">Informacion de su Cuenta</h2>
+                            <div th:each="perfil : ${cuentaEncontrada}" id="lista-egresos"> 
+                                <div class="elemento limpiarEstilos">
+                                    <table>
+                                        <tr>
+                                            <td><div th:text="'Id de la cuenta: ' + ${perfil.idCuenta}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'Numero de Cuenta: ' + ${perfil.numeroCuenta}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'Saldo Total: ' + '$' + ${perfil.saldoDisponible}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                    </table>
+                                    <h2 class="titulo">Informacion de su Login</h2>
+                                    <table>
+                                        <tr>
+                                            <td><div th:text="'Id del Login: ' + ${perfil.login.idLogin}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'Correo Electronico: ' + ${perfil.login.correo}" class="elemento_descripcion"></div></td>                                                
+                                        </tr>
+                                        <tr>
+                                            <td th:switch="${perfil.login.estadoLogin}">
+                                                <div th:case="'A'">
+                                                    <div th:text="'Estado del Login:' + ' ' + 'Activo'" class="elemento_descripcion">                   
+                                                    </div>
+                                                </div>
+                                                <div th:case="'I'">
+                                                    <div th:text="'Estado del Login' + ' ' + 'Inactivo'" class="elemento_descripcion">                   
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <h2 class="titulo">Informacion de su Usuario</h2>
+                                    <table>
+                                        <tr>
+                                            <td><div th:text="'Id del Usuario: ' + ${perfil.login.usuario.idUsuario}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'Nombres: ' + ${perfil.login.usuario.nombre}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'Apellidos: ' + ${perfil.login.usuario.apellido}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'DUI: ' + ${perfil.login.usuario.dui}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div th:text="'Telefono: ' + ${perfil.login.usuario.telefono}" class="elemento_descripcion"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td th:switch="${perfil.login.usuario.estadoUsuario}">
+                                                <div th:case="'A'">
+                                                    <div th:text="'Estado del Usuario:' + ' ' + 'Activo'" class="elemento_descripcion">                   
+                                                    </div>
+                                                </div>
+                                                <div th:case="'I'">
+                                                    <div th:text="'Estado del Usuario' + ' ' + 'Inactivo'" class="elemento_descripcion">                   
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>         
+                    </div>
+                    <!--ICONOS-->
+                    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+                </body>
+                </html>

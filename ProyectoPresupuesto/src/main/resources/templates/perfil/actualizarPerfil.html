@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Actualizar Perfil</title>
+        <link rel="stylesheet" href="../css/registro.css" />
+    </head>
+    <body>
+        <section class="container">
+            <header>Actualizar Perfil</header>
+            <form th:action="@{/actualizarDatosPerfil}" class="form" method="POST">                
+                    <div class="input-box">
+                        <label>Nombres</label>
+                        <input type="text" name="nombre" th:value="${usuario.nombre}" class="input" placeholder="Nombres Completos" maxlength="45" required />
+                    </div>               
+                    <div class="input-box">
+                        <label>Apellidos</label>
+                        <input type="text" name="apellido" th:value="${usuario.apellido}" class="input" placeholder="Apellidos Completos" maxlength="50" required />
+                    </div> 
+                    <div class="column">
+                        <div class="input-box">
+                            <label>DUI</label>
+                            <input type="text" name="dui" th:value="${usuario.dui}" class="input dui" placeholder="00000000-0" minlength="10" maxlength="10" required />
+                        </div>
+                        <div class="input-box">
+                            <label>Telefono</label>
+                            <input type="text" name="telefono" th:value="${usuario.telefono}" class="input telefono" placeholder="0000-0000" minlength="9" maxlength="9" required />
+                        </div>
+                                                                
+                        <!--ID DEL USUARIO-->
+                        <input type="hidden" name="idUsuario" th:value="${usuario.idUsuario}">
+                        
+                        <!-- ESTADO DEL USUARIO PREDETERMINADO -->
+                        <input type="hidden" value="A" name="estadoUsuario">
+                            
+                    </div>
+                    
+                    <!--ID DEL LOGIN-->
+                    <input type="hidden" name="idLogin" th:value="${login.idLogin}">
+                        
+                        <div class="input-box address">
+                        <label>Datos de Login</label>
+                        <input type="email" name="correo" th:value="${login.correo}" class="input" placeholder="ejemplo@outlook.com" required />                   
+                        
+                        <!-- ESTADO DEL LOGIN PREDETERMINADO -->
+                        <input type="hidden" value="A" name="estadoLogin">
+                            
+                    </div>                 
+                <button>Actualizar Perfil</button>
+            </form>
+        </section>
+        <script src="../js/validacionInput.js" type="text/javascript"></script>
+    </body>
+</html>
+
+

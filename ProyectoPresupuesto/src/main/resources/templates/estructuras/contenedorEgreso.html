@@ -1,0 +1,40 @@
+<div class="contenedor limpiarEstilos">
+    <div class="egreso">
+        <h2 class="egreso_titulo">Egreso</h2>
+        <div>
+            <div th:each="egresoUsuario : ${detalleEgreso}" id="lista-egresos"> 
+                <div class="elemento limpiarEstilos">
+                    <table>
+                        <tr>
+                            <td><div th:text="'Numero de Egreso: ' + ${egresoUsuario.idEgreso}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Numero de Cuenta: ' + ${egresoUsuario.cuenta.numeroCuenta}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Saldo del Egreso: ' + '$' + ${egresoUsuario.saldoEgreso}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Descripcion: ' + ${egresoUsuario.descripcion}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td th:switch="${egresoUsuario.estadoEgreso}">
+                                <div th:case="'A'">
+                                    <div th:text="'Estado del Egreso:' + ' ' + 'Activo'" class="elemento_descripcion">                   
+                                    </div>
+                                </div>
+                                <div th:case="'I'">
+                                    <div th:text="'Estado del Egreso:' + ' ' + 'Inactivo'" class="elemento_descripcion">                   
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Fecha del Egreso: ' + ${#calendars.format(egresoUsuario.fechaEgreso ,'EEEE, d MMMM yyyy')}" class="elemento_descripcion"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>         
+</div>

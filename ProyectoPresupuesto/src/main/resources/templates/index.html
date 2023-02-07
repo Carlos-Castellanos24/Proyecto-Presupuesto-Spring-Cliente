@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <link href="css/estilos.css" rel="stylesheet">
+            <title>Aplicacion Presupuesto</title>
+        </head>
+    <body>  
+        
+        <!-- CABECERO -->
+        <div th:replace="/estructuras/cabecero :: div"></div>
+
+        <!-- FORMULARIO -->
+        <form th:replace="/estructuras/formulario :: form"></form>
+
+        <!-- CONTENEDOR -->
+        <div th:replace="/estructuras/contenedor :: div"></div>
+        
+        <!--ICONOS-->
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    </body>
+</html>

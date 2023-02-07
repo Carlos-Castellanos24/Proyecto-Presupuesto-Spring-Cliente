@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Registro</title>
+        <link rel="stylesheet" href="css/registro.css" />
+        <script src="js/validacionPassword.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <section class="container">
+            <header>Formulario de Registro</header>
+            <form th:action="@{/insertarUsuario}" th:object="${usuario}" class="form" method="POST">
+                <div class="input-box">
+                    <label>Nombres</label>
+                    <input type="text" name="nombre" class="input" placeholder="Nombres Completos" maxlength="45" required />
+                </div>               
+                <div class="input-box">
+                    <label>Apellidos</label>
+                    <input type="text" name="apellido" class="input" placeholder="Apellidos Completos" maxlength="50" required />
+                </div> 
+                <div class="column">
+                    <div class="input-box">
+                        <label>DUI</label>
+                        <input type="text" name="dui" class="input dui" placeholder="00000000-0" minlength="10" maxlength="10" required />
+                    </div>
+                    <div class="input-box">
+                        <label>Telefono</label>
+                        <input type="text" name="telefono" class="input telefono" placeholder="0000-0000" minlength="9" maxlength="9" required />
+                    </div>
+                    <!-- ESTADO DEL USUARIO PREDETERMINADO -->
+                    <input type="hidden" value="A" name="estadoUsuario">
+                </div>
+                <div class="input-box address">
+                    <label>Datos de Login</label>                   
+                    
+                    <input type="password" name="clave" id="clave" class="input" placeholder="Ingrese una contraseña" required />
+                    <input type="password" name="clave2" id="clave2" class="input" placeholder="Repita su contraseña" onkeyup="validarPassword()" required />
+                    <p><span class="span" id="alerta" style="color: red;"></span></p> 
+                    
+                    <input type="email" name="correo" id="correo" class="input" placeholder="ejemplo@outlook.com" onkeypress="validarCorreo()" required/>                   
+                    <p><span class="span" id="alertaCorreo" style="color: red;"></span></p> 
+                    
+                    <!-- ESTADO DEL LOGIN PREDETERMINADO -->
+                    <input type="hidden" value="A" name="estadoLogin">
+                </div>                   
+                <input type="submit" class="envio" id="envio" value="Registrarse"></input>
+            </form>
+        </section>
+        <script src="js/validacionInput.js" type="text/javascript"></script>
+    </body>
+</html>
+
+

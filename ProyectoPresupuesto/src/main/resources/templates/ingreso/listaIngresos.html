@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <link href="../css/detalles.css" rel="stylesheet">
+                <title>Ingresos</title>
+                </head>
+                <body>
+
+                    <!-- CABECERO -->
+                    <div th:replace="/estructuras/cabecero :: div"></div>
+
+                    <div class="contenedor limpiarEstilos">
+                        <div class="ingreso">
+                            <h2 class="ingreso_titulo">Ingresos</h2>
+                            <div th:if="${ingresos != null and !ingresos.empty}">
+                                <div>
+                                    <div th:each="ingresosUsuario : ${ingresos}" id="lista-ingresos"> 
+                                        <div class="elemento limpiarEstilos">
+                                            <table>
+                                                <tr>
+                                                    <td><div th:text="'Numero de Egreso: ' + ${ingresosUsuario.idIngreso}" class="elemento_descripcion"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div th:text="'Numero de Cuenta: ' + ${ingresosUsuario.cuenta.numeroCuenta}" class="elemento_descripcion"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div th:text="'Saldo del Egreso: ' + '$' + ${ingresosUsuario.saldoIngreso}" class="elemento_descripcion"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div th:text="'Descripcion: ' + ${ingresosUsuario.descripcion}" class="elemento_descripcion"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td th:switch="${ingresosUsuario.estadoIngreso}">
+                                                        <div th:case="'A'">
+                                                            <div th:text="'Estado del Egreso:' + ' ' + 'Activo'" class="elemento_descripcion">                   
+                                                            </div>
+                                                        </div>
+                                                        <div th:case="'I'">
+                                                            <div th:text="'Estado del Egreso:' + ' ' + 'Inactivo'" class="elemento_descripcion">                   
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div th:text="'Fecha del Egreso: ' + ${#calendars.format(ingresosUsuario.fechaIngreso ,'EEEE, d MMMM yyyy')}" class="elemento_descripcion"></div></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>         
+                    </div>
+                    <!--ICONOS-->
+                    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+                </body>
+                </html>

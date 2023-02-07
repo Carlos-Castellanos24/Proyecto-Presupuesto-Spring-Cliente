@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/login.css">
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="login-info-container">
+                <h1 class="title">Registrarse con</h1>
+                <div class="social-login">
+                    <div class="social-login-element">
+                        <img src="img/google.svg" alt="google-image">
+                            <span onclick="alerta()">Google</span>
+                    </div>
+                    <div class="social-login-element">
+                        <img src="img/facebook.svg" alt="facebook-image">
+                        <span onclick="alerta()">Facebook</span>
+                    </div>
+                </div>
+                <p>o</p>
+                <form th:action="@{/validarLogin}" class="inputs-container" method="POST">
+                    <div th:if="${errorCuenta != null}">
+                        <p><span class="span">[[${errorCuenta}]]</span></p>
+                    </div>
+                    <input class="input" name="correo" type="email" placeholder="Correo">
+                    <input class="input" name="clave" type="password" placeholder="Contraseña">
+                        <p>Olvidaste la contraseña? <span class="span"><a th:href="@{/olvidarPassword}">Click aqu&iacute;</a></span></p>
+                    <button class="btn">Ingresar</button>
+                    <p>No tienes una cuenta? <span class="span"><a href="/registro">Registrate</a></span></p>
+                </form>
+            </div>
+            <img class="image-container" src="img/logo.svg" alt="">
+        </div>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/sweetAlert.js"></script>
+    </body>
+</html>

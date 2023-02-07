@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <link href="../css/detalles.css" rel="stylesheet">
+                <title>Egresos</title>
+                </head>
+                <body>
+                    <!-- CABECERO -->
+                    <div th:replace="/estructuras/cabecero :: div"></div>
+                    
+                    <div>
+                        <div class="contenedor limpiarEstilos">
+                            <div class="egreso">
+                                <h2 class="egreso_titulo">Egresos</h2>
+                                <div th:if="${egresos != null and !egresos.empty}">
+                                    <div>
+                                        <div th:each="egresosUsuario : ${egresos}" id="lista-egresos"> 
+                                            <div class="elemento limpiarEstilos">
+                                                <table>
+                                                    <tr>
+                                                        <td><div th:text="'Numero de Egreso: ' + ${egresosUsuario.idEgreso}" class="elemento_descripcion"></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div th:text="'Numero de Cuenta: ' + ${egresosUsuario.cuenta.numeroCuenta}" class="elemento_descripcion"></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div th:text="'Saldo del Egreso: ' + '$' + ${egresosUsuario.saldoEgreso}" class="elemento_descripcion"></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div th:text="'Descripcion: ' + ${egresosUsuario.descripcion}" class="elemento_descripcion"></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td th:switch="${egresosUsuario.estadoEgreso}">
+                                                            <div th:case="'A'">
+                                                                <div th:text="'Estado del Egreso:' + ' ' + 'Activo'" class="elemento_descripcion">                   
+                                                                </div>
+                                                            </div>
+                                                            <div th:case="'I'">
+                                                                <div th:text="'Estado del Egreso:' + ' ' + 'Inactivo'" class="elemento_descripcion">                   
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div th:text="'Fecha del Egreso: ' + ${#calendars.format(egresosUsuario.fechaEgreso ,'EEEE, d MMMM yyyy')}" class="elemento_descripcion"></div></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>         
+                        </div>
+                    </div>
+                    <!--ICONOS-->
+                    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+                </body>
+                </html>

@@ -1,0 +1,40 @@
+<div class="contenedor limpiarEstilos">
+    <div class="egreso">
+        <h2 class="ingreso_titulo">Ingreso</h2>
+        <div>
+            <div th:each="ingresoUsuario : ${detalleIngreso}" id="lista-egresos"> 
+                <div class="elemento limpiarEstilos">
+                    <table>
+                        <tr>
+                            <td><div th:text="'Numero de Ingreso: ' + ${ingresoUsuario.idIngreso}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Numero de Cuenta: ' + ${ingresoUsuario.cuenta.numeroCuenta}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Saldo del Ingreso: ' + '$' + ${ingresoUsuario.saldoIngreso}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Descripcion: ' + ${ingresoUsuario.descripcion}" class="elemento_descripcion"></div></td>
+                        </tr>
+                        <tr>
+                            <td th:switch="${ingresoUsuario.estadoIngreso}">
+                                <div th:case="'A'">
+                                    <div th:text="'Estado del Ingreso:' + ' ' + 'Activo'" class="elemento_descripcion">                   
+                                    </div>
+                                </div>
+                                <div th:case="'I'">
+                                    <div th:text="'Estado del Ingreso:' + ' ' + 'Inactivo'" class="elemento_descripcion">                   
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div th:text="'Fecha del Egreso: ' + ${#calendars.format(ingresoUsuario.fechaIngreso ,'EEEE, d MMMM yyyy')}" class="elemento_descripcion"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>         
+</div>
